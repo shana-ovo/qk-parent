@@ -82,4 +82,13 @@ public class DeptController {
         deptService.updateDept(dept);
         return Result.success();
     }
+
+    /**
+     * 查询所有部门
+     * @return
+     */
+    @GetMapping("/list")
+    public Result findAll(){
+        return Result.success(deptService.findAll());
+    }
 }

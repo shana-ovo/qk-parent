@@ -48,4 +48,11 @@ public interface DeptMapper {
      * @param dept
      */
     void update(Dept dept);
+
+    /**
+     * 查询所有部门
+     * @return
+     */
+    @Select("select id, name, status, create_time, update_time from dept")
+    List<Dept> getAll();
 }

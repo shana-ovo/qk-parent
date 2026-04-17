@@ -3,6 +3,8 @@ package com.qk.Service;
 import com.qk.common.PageResult;
 import com.qk.entity.Dept;
 
+import java.util.List;
+
 /**
  * 部门服务接口
  */
@@ -42,4 +44,10 @@ public interface DeptService {
      * @param dept
      */
     void updateDept(Dept dept);
+
+    /**
+     * 查询所有部门
+     * @return
+     */
+    List<Dept> findAll();
 }

@@ -77,4 +77,13 @@ public class DeptServiceImpl implements DeptService {
         dept.setUpdateTime(LocalDateTime.now());
         deptMapper.update(dept);
     }
+
+    /**
+     * 查询所有部门
+     * @return
+     */
+    @Override
+    public List<Dept> findAll() {
+        return deptMapper.getAll();
+    }
 }
