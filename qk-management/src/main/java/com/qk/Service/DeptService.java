@@ -29,4 +29,11 @@ public interface DeptService {
      * @param id
      */
     void deleteDept(Integer id);
+
+    /**
+     * 根据id查询部门
+     * @param id
+     * @return
+     */
+    Dept getDept(Integer id);
 }

@@ -55,4 +55,16 @@ public class DeptServiceImpl implements DeptService {
     public void deleteDept(Integer id) {
         deptMapper.deleteById(id);
     }
+
+    /**
+     * 根据id查询部门
+     * @param id
+     * @return
+     */
+    @Override
+    public Dept getDept(Integer id) {
+
+        Dept dept = deptMapper.getById(id);
+        return dept;
+    }
 }

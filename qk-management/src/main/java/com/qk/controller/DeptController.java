@@ -53,4 +53,15 @@ public class DeptController {
         deptService.deleteDept(id);
         return Result.success();
     }
+
+    /**
+     * 根据id查询部门
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Result getDept(@PathVariable("id") Integer id){
+        Dept dept = deptService.getDept(id);
+        return Result.success(dept);
+    }
 }
