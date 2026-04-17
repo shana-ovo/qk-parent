@@ -64,4 +64,15 @@ public class DeptController {
         Dept dept = deptService.getDept(id);
         return Result.success(dept);
     }
+
+    /**
+     * 修改部门
+     * @param dept
+     * @return
+     */
+    @PutMapping
+    public Result updateDept(@RequestBody Dept dept){
+        deptService.updateDept(dept);
+        return Result.success();
+    }
 }
