@@ -60,4 +60,14 @@ public class RoleServiceImpl implements RoleService {
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.insert(role);
     }
+
+    /**
+     * 根据id查询角色
+     * @param id
+     * @return
+     */
+    @Override
+    public Role getRole(Integer id) {
+        return roleMapper.getById(id);
+    }
 }

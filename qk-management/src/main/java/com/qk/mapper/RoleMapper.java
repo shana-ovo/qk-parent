@@ -5,6 +5,8 @@ import com.qk.entity.Role;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
 import java.util.List;
 
 /**
@@ -34,4 +36,12 @@ public interface RoleMapper {
     @Insert("insert into role(name, label, remark, create_time, update_time) " +
             "value (#{name},#{label},#{remark},#{createTime},#{updateTime})")
     void insert(Role role);
+
+    /**
+     * 根据id查询角色
+     * @param id
+     * @return
+     */
+    @Select("select id, name, label, remark, create_time, update_time from role where id = #{id}")
+    Role getById(Integer id);
 }

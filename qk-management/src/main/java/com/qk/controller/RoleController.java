@@ -50,10 +50,27 @@ public class RoleController {
         return Result.success();
     }
 
+    /**
+     * 新增角色
+     * @param role
+     * @return
+     */
     @PostMapping
     public Result addRole(@RequestBody Role role) {
         log.info("添加角色: {}", role);
         roleService.addRole(role);
         return Result.success();
+    }
+
+    /**
+     * 根据id查询角色
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Result getRole(@PathVariable("id") Integer id){
+        log.info("根据id查询角色，id:{}",id);
+        Role role = roleService.getRole(id);
+        return Result.success(role);
     }
 }
