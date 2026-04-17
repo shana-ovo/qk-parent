@@ -3,6 +3,8 @@ package com.qk.Service;
 import com.qk.common.PageResult;
 import com.qk.entity.Role;
 
+import java.util.List;
+
 /**
  * 角色服务接口
  */
@@ -42,4 +44,10 @@ public interface RoleService {
      * @param role
      */
     void updateRole(Role role);
+
+    /**
+     *查询所有角色
+     * @return
+     */
+    List<Role> findAll();
 }

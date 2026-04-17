@@ -50,4 +50,11 @@ public interface RoleMapper {
      * @param role
      */
     void update(Role role);
+
+    /**
+     * 查询所有角色
+     * @return
+     */
+    @Select("select id, name, label, remark, create_time, update_time from role")
+    List<Role> getAll();
 }

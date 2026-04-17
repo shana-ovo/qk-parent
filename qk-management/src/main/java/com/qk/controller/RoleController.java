@@ -85,4 +85,13 @@ public class RoleController {
         roleService.updateRole(role);
         return Result.success();
     }
+
+    /**
+     * 查询所有角色
+     * @return
+     */
+    @GetMapping("/list")
+    public Result findAll(){
+        return Result.success(roleService.findAll());
+    }
 }

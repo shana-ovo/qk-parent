@@ -80,4 +80,13 @@ public class RoleServiceImpl implements RoleService {
         role.setUpdateTime(LocalDateTime.now());
         roleMapper.update(role);
     }
+
+    /**
+     * 查询所有角色
+     * @return
+     */
+    @Override
+    public List<Role> findAll() {
+        return roleMapper.getAll();
+    }
 }
