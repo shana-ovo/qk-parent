@@ -42,4 +42,15 @@ public class DeptController {
         PageResult<Dept> pageResult = deptService.listDepts(name,status,page,pageSize);
         return Result.success(pageResult);
     }
+
+    /**
+     * 根据id删除部门
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public Result deleteDept(@PathVariable("id") Integer id){
+        deptService.deleteDept(id);
+        return Result.success();
+    }
 }

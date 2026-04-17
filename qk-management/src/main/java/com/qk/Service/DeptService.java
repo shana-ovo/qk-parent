@@ -23,4 +23,10 @@ public interface DeptService {
      * @return
      */
     PageResult<Dept> listDepts(String name, Integer status, Integer page, Integer pageSize);
+
+    /**
+     * 根据id删除部门
+     * @param id
+     */
+    void deleteDept(Integer id);
 }
