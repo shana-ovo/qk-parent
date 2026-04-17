@@ -1,13 +1,16 @@
 package com.qk.controller;
 
 import com.qk.Service.DeptService;
+import com.qk.common.PageResult;
 import com.qk.common.Result;
 import com.qk.entity.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+/**
+ * 部门管理控制器
+ */
+@RequestMapping("/depts")
 @RestController
 public class DeptController {
     @Autowired
@@ -18,9 +21,25 @@ public class DeptController {
      * @param dept
      * @return
      */
-    @PostMapping("/depts")
+    @PostMapping
     public Result addDept(@RequestBody Dept dept){
         deptService.addDept(dept);
         return Result.success();
+    }
+
+    /**
+     * 部门列表查询
+     * @param name
+     * @param status
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @GetMapping
+    public Result listDepts(String name, Integer status,
+                            @RequestParam(defaultValue = "1") Integer page,
+                            @RequestParam(defaultValue = "10") Integer pageSize){
+        PageResult<Dept> pageResult = deptService.listDepts(name,status,page,pageSize);
+        return Result.success(pageResult);
     }
 }

@@ -29,6 +29,7 @@
         <!--自定义属性-->
         <mybatis.version>3.0.4</mybatis.version>
         <mybatis.test.version>3.0.4</mybatis.test.version>
+        <pagehelper.version>2.1.0</pagehelper.version>
     </properties>
 
     <dependencies>
@@ -53,6 +54,13 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter-test</artifactId>
                 <version>${mybatis.test.version}</version>
+            </dependency>
+
+            <!--分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
