@@ -4,12 +4,14 @@ import com.qk.Service.DeptService;
 import com.qk.common.PageResult;
 import com.qk.common.Result;
 import com.qk.entity.Dept;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * 部门管理控制器
  */
+@Slf4j
 @RequestMapping("/depts")
 @RestController
 public class DeptController {
@@ -23,6 +25,7 @@ public class DeptController {
      */
     @PostMapping
     public Result addDept(@RequestBody Dept dept){
+        log.info("修改部门: {}" , dept);
         deptService.addDept(dept);
         return Result.success();
     }
@@ -39,6 +42,7 @@ public class DeptController {
     public Result listDepts(String name, Integer status,
                             @RequestParam(defaultValue = "1") Integer page,
                             @RequestParam(defaultValue = "10") Integer pageSize){
+        log.info("条件分页查询部门: name={}, status={}, page={}, pageSize={}", name, status, page, pageSize);
         PageResult<Dept> pageResult = deptService.listDepts(name,status,page,pageSize);
         return Result.success(pageResult);
     }
@@ -50,6 +54,7 @@ public class DeptController {
      */
     @DeleteMapping("/{id}")
     public Result deleteDept(@PathVariable("id") Integer id){
+        log.info("删除部门: {}" , id);
         deptService.deleteDept(id);
         return Result.success();
     }
@@ -61,6 +66,7 @@ public class DeptController {
      */
     @GetMapping("/{id}")
     public Result getDept(@PathVariable("id") Integer id){
+        log.info("根据ID查询部门: {}" , id);
         Dept dept = deptService.getDept(id);
         return Result.success(dept);
     }
@@ -72,6 +78,7 @@ public class DeptController {
      */
     @PutMapping
     public Result updateDept(@RequestBody Dept dept){
+        log.info("修改部门: {}" , dept);
         deptService.updateDept(dept);
         return Result.success();
     }
