@@ -44,4 +44,10 @@ public interface RoleMapper {
      */
     @Select("select id, name, label, remark, create_time, update_time from role where id = #{id}")
     Role getById(Integer id);
+
+    /**
+     * 修改角色
+     * @param role
+     */
+    void update(Role role);
 }

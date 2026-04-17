@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qk.mapper.RoleMapper">
+    <update id="update">
+        update role
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="label != null and label != ''">
+                label = #{label},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
     <select id="selectByCondition" resultType="com.qk.entity.Role">
         SELECT id, name, label, create_time, update_time FROM role
         <where>
