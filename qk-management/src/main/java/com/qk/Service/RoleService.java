@@ -17,4 +17,16 @@ public interface RoleService {
      * @return
      */
     PageResult<Role> listRoles(String name, String label, int page, int pageSize);
+
+    /**
+     * 根据id查询角色
+     * @param id
+     */
+    void deleteRole(Integer id);
+
+    /**
+     * 新增角色
+     * @param role
+     */
+    void addRole(Role role);
 }

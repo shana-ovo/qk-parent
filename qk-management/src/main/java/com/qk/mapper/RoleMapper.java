@@ -2,6 +2,8 @@ package com.qk.mapper;
 
 
 import com.qk.entity.Role;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
@@ -17,4 +19,19 @@ public interface RoleMapper {
      * @return
      */
     List<Role> selectByCondition(String name, String label);
+
+    /**
+     * 根据id删除角色
+     * @param id
+     */
+    @Delete("DELETE FROM role WHERE id = #{id}")
+    void deleteById(Integer id);
+
+    /**
+     * 新增角色
+     * @param role
+     */
+    @Insert("insert into role(name, label, remark, create_time, update_time) " +
+            "value (#{name},#{label},#{remark},#{createTime},#{updateTime})")
+    void insert(Role role);
 }

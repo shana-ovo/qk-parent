@@ -9,6 +9,7 @@ import com.qk.mapper.RoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -38,5 +39,25 @@ public class RoleServiceImpl implements RoleService {
         long total = pageInfo.getTotal();
         List<Role> roleList = pageInfo.getList();
         return new PageResult<>(total,roleList);
+    }
+
+    /**
+     * 根据id删除角色
+     * @param id
+     */
+    @Override
+    public void deleteRole(Integer id) {
+        roleMapper.deleteById(id);
+    }
+
+    /**
+     * 新增角色
+     * @param role
+     */
+    @Override
+    public void addRole(Role role) {
+        role.setCreateTime(LocalDateTime.now());
+        role.setUpdateTime(LocalDateTime.now());
+        roleMapper.insert(role);
     }
 }

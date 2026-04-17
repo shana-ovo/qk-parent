@@ -6,10 +6,7 @@ import com.qk.common.Result;
 import com.qk.entity.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 
@@ -39,5 +36,24 @@ public class RoleController {
 
         PageResult<Role> pageResult = roleService.listRoles(name, label, page, pageSize);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 根据ID删除角色
+     * @param id 角色ID
+     * @return 操作结果
+     */
+    @DeleteMapping("/{id}")
+    public Result deleteRole(@PathVariable Integer id) {
+        log.info("删除角色: id={}", id);
+        roleService.deleteRole(id);
+        return Result.success();
+    }
+
+    @PostMapping
+    public Result addRole(@RequestBody Role role) {
+        log.info("添加角色: {}", role);
+        roleService.addRole(role);
+        return Result.success();
     }
 }
