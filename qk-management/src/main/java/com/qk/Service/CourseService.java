@@ -21,4 +21,10 @@ public interface CourseService {
      * @param id
      */
     void deleteCourse(Integer id);
+
+    /**
+     * 新增课程
+     * @param course
+     */
+    void addCourse(Course course);
 }

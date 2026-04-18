@@ -2,6 +2,7 @@ package com.qk.mapper;
 
 import com.qk.entity.Course;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -27,4 +28,12 @@ public interface CourseMapper {
      */
     @Delete("delete from course where id = #{id}")
     void deleteById(Integer id);
+
+    /**
+     * 添加课程
+     * @param course
+     */
+    @Insert("insert into course(subject, name, price, target, description, create_time, update_time) " +
+            "VALUE (#{subject},#{name},#{price},#{target},#{description},#{createTime},#{updateTime})")
+    void insert(Course course);
 }

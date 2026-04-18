@@ -3,6 +3,7 @@ package com.qk.controller;
 import com.qk.Service.impl.CourseServiceImpl;
 import com.qk.common.Result;
 import com.qk.dto.CourseDto;
+import com.qk.entity.Course;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,18 @@ public class CourseController {
     public Result deleteCourse(@PathVariable("id") Integer id){
         log.info("根据id删除课程：{}",id);
         courseService.deleteCourse(id);
+        return Result.success();
+    }
+
+    /**
+     * 新增课程
+     * @param course
+     * @return
+     */
+    @PostMapping
+    public Result addCourse(@RequestBody Course course) {
+        log.info("添加课程：{}",course);
+        courseService.addCourse(course);
         return Result.success();
     }
 }

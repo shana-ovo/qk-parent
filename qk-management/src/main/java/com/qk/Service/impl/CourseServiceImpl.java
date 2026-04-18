@@ -10,6 +10,7 @@ import com.qk.mapper.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -45,5 +46,16 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void deleteCourse(Integer id) {
         courseMapper.deleteById(id);
+    }
+
+    /**
+     * 新增课程
+     * @param course
+     */
+    @Override
+    public void addCourse(Course course) {
+        course.setCreateTime(LocalDateTime.now());
+        course.setUpdateTime(LocalDateTime.now());
+        courseMapper.insert(course);
     }
 }
