@@ -59,4 +59,13 @@ public interface CourseMapper {
      */
     @Select("select id, subject, name, price, target, description, create_time, update_time from course")
     List<Course> selectAll();
+
+    /**
+     * 根据subject查询对应所有学科
+     * @param subject
+     * @return
+     */
+    @Select("select id, subject, name, price, target, description, create_time, update_time " +
+            "from course where subject = #{subject}")
+    List<Course> selectBySubject(Integer subject);
 }

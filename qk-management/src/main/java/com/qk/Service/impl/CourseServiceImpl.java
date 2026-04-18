@@ -88,4 +88,15 @@ public class CourseServiceImpl implements CourseService {
         List<Course> courseList = courseMapper.selectAll();
         return courseList;
     }
+
+    /**
+     * 根据subject查询对应所有学科
+     * @param subject
+     * @return
+     */
+    @Override
+    public List<Course> getCoursesBySubject(Integer subject) {
+        List<Course> courseList = courseMapper.selectBySubject(subject);
+        return courseList;
+    }
 }

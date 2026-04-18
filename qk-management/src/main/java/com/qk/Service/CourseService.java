@@ -48,4 +48,11 @@ public interface CourseService {
      * @return
      */
     List<Course> findAll();
+
+    /**
+     * 根据subject查询对应所有学科
+     * @param subject
+     * @return
+     */
+    List<Course> getCoursesBySubject(Integer subject);
 }

@@ -87,6 +87,21 @@ public class CourseController {
     public Result findAll(){
         log.info("查询所有课程");
         List<Course> courseList = courseService.findAll();
+        log.info("根据subject查询对应所有学科:{}",courseList);
         return Result.success(courseList);
+    }
+
+    /**
+     * 根据subject查询对应所有学科
+     * @param subject
+     * @return
+     */
+    @GetMapping("/subject/{subject}")
+    public Result getCoursesBySubject(@PathVariable("subject") Integer subject){
+        log.info("根据subject查询对应所有学科，subject:{}",subject);
+        List<Course> courseList = courseService.getCoursesBySubject(subject);
+        log.info("根据subject查询对应所有学科:{}",courseList);
+        return Result.success(courseList);
+
     }
 }
