@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 课程管理控制器
  */
@@ -62,5 +64,17 @@ public class CourseController {
     public Result getCourseById(@PathVariable("id") Integer id){
         log.info("根据id查询课程，id：{}",id);
         return Result.success(courseService.getCourseById(id));
+    }
+
+    /**
+     * 修改课程
+     * @param course
+     * @return
+     */
+    @PutMapping
+    public Result updateCourse(@RequestBody Course course){
+        log.info("修改课程：{}",course);
+        courseService.updateCourse(course);
+        return Result.success();
     }
 }

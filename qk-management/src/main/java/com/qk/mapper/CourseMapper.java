@@ -46,4 +46,10 @@ public interface CourseMapper {
     @Select("select id, subject, name, price, target, description, create_time, update_time " +
             "from course where id=#{id}")
     Course getById(Integer id);
+
+    /**
+     * 修改课程
+     * @param course
+     */
+    void update(Course course);
 }

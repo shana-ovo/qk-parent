@@ -68,4 +68,14 @@ public class CourseServiceImpl implements CourseService {
     public Course getCourseById(Integer id) {
         return courseMapper.getById(id);
     }
+
+    /**
+     * 更新课程
+     * @param course
+     */
+    @Override
+    public void updateCourse(Course course) {
+        course.setUpdateTime(LocalDateTime.now());
+        courseMapper.update(course);
+    }
 }
