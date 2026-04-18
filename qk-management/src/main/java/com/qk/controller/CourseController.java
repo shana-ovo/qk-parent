@@ -52,4 +52,15 @@ public class CourseController {
         courseService.addCourse(course);
         return Result.success();
     }
+
+    /**
+     * 根据id查询课程
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public Result getCourseById(@PathVariable("id") Integer id){
+        log.info("根据id查询课程，id：{}",id);
+        return Result.success(courseService.getCourseById(id));
+    }
 }

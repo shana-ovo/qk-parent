@@ -58,4 +58,14 @@ public class CourseServiceImpl implements CourseService {
         course.setUpdateTime(LocalDateTime.now());
         courseMapper.insert(course);
     }
+
+    /**
+     * 根据id查询课程
+     * @param id
+     * @return
+     */
+    @Override
+    public Course getCourseById(Integer id) {
+        return courseMapper.getById(id);
+    }
 }

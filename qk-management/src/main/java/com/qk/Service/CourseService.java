@@ -27,4 +27,11 @@ public interface CourseService {
      * @param course
      */
     void addCourse(Course course);
+
+    /**
+     * 根据id查询课程
+     * @param id
+     * @return
+     */
+    Course getCourseById(Integer id);
 }
