@@ -52,4 +52,11 @@ public interface CourseMapper {
      * @param course
      */
     void update(Course course);
+
+    /**
+     * 查询所有课程
+     * @return
+     */
+    @Select("select id, subject, name, price, target, description, create_time, update_time from course")
+    List<Course> selectAll();
 }

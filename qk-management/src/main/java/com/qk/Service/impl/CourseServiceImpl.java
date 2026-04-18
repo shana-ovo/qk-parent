@@ -78,4 +78,14 @@ public class CourseServiceImpl implements CourseService {
         course.setUpdateTime(LocalDateTime.now());
         courseMapper.update(course);
     }
+
+    /**
+     * 查询所有课程
+     * @return
+     */
+    @Override
+    public List<Course> findAll() {
+        List<Course> courseList = courseMapper.selectAll();
+        return courseList;
+    }
 }

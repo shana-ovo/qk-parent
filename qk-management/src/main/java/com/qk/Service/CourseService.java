@@ -4,6 +4,8 @@ import com.qk.common.PageResult;
 import com.qk.dto.CourseDto;
 import com.qk.entity.Course;
 
+import java.util.List;
+
 /**
  * 课程管理服务接口
  */
@@ -40,4 +42,10 @@ public interface CourseService {
      * @param course
      */
     void updateCourse(Course course);
+
+    /**
+     * 查询所有课程
+     * @return
+     */
+    List<Course> findAll();
 }
