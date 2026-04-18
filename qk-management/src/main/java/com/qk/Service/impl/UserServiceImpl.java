@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
         //3.组装数据
         PageInfo pageInfo = new PageInfo<>(userList);
         long total = pageInfo.getTotal();
-        List users = pageInfo.getList();
-        return new PageResult<>(total,users);
+        return new PageResult<>(total,userList);
     }
 }

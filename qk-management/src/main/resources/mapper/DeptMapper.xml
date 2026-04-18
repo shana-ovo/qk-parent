@@ -6,7 +6,7 @@
     <update id="update">
         update dept
         <set>
-            <if test="name != null and name != ''">
+            <if test="name != null and name.length()>0">
                 name = #{name},
             </if>
             <if test="status != null">
@@ -20,7 +20,7 @@
     <select id="selectByCondition" resultType="com.qk.entity.Dept">
         select id, name, status, create_time, update_time from dept
         <where>
-            <if test="name != null and name !=''">
+            <if test="name != null and name.length()>0">
                 name like concat('%',#{name},'%')
             </if>
             <if test="status != null">

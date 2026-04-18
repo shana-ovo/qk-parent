@@ -30,6 +30,7 @@ public class UserController {
      */
     @GetMapping
     public Result listUser(UserDto userDto) {
+        log.info("用户列表查询：userDto：{}",userDto);
         PageResult<User> pageResult = userService.listUser(userDto);
         return Result.success(pageResult);
     }

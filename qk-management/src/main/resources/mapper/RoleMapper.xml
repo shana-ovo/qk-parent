@@ -4,13 +4,13 @@
     <update id="update">
         update role
         <set>
-            <if test="name != null and name != ''">
+            <if test="name != null and name.length()>0">
                 name = #{name},
             </if>
-            <if test="label != null and label != ''">
+            <if test="label != null and label.length()>0">
                 label = #{label},
             </if>
-            <if test="remark != null and remark != ''">
+            <if test="remark != null and remark.length()>0">
                 remark = #{remark},
             </if>
             update_time = #{updateTime}
@@ -20,10 +20,10 @@
     <select id="selectByCondition" resultType="com.qk.entity.Role">
         SELECT id, name, label, create_time, update_time FROM role
         <where>
-            <if test="name != null and name != ''">
+            <if test="name != null and name.length()>0">
                 AND name LIKE CONCAT('%', #{name}, '%')
             </if>
-            <if test="label != null and label != ''">
+            <if test="label != null and label.length()>0">
                 AND label LIKE CONCAT('%', #{label}, '%')
             </if>
         </where>

@@ -38,11 +38,10 @@ public class DeptServiceImpl implements DeptService {
         //1.开启分页
         PageHelper.startPage(page,pageSize);
         //2.调用mapper
-        List<Dept> depts = deptMapper.selectByCondition(name,status);
+        List<Dept> deptList = deptMapper.selectByCondition(name,status);
         //3.获取总记录数
-        PageInfo<Dept> pageInfo = new PageInfo<>(depts);
+        PageInfo<Dept> pageInfo = new PageInfo<>(deptList);
         long total = pageInfo.getTotal();
-        List<Dept> deptList = pageInfo.getList();
 
         return new PageResult<>(total,deptList);
     }

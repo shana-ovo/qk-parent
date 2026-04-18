@@ -33,11 +33,10 @@ public class RoleServiceImpl implements RoleService {
         //1.开启分页
         PageHelper.startPage(page,pageSize);
         //2.得到查询结果
-        List<Role> roles = roleMapper.selectByCondition(name,label);
+        List<Role> roleList = roleMapper.selectByCondition(name,label);
         //3.封装返回数据
-        PageInfo<Role> pageInfo = new PageInfo<>(roles);
+        PageInfo<Role> pageInfo = new PageInfo<>(roleList);
         long total = pageInfo.getTotal();
-        List<Role> roleList = pageInfo.getList();
         return new PageResult<>(total,roleList);
     }
 
