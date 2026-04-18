@@ -10,6 +10,7 @@ import lombok.Data;
 public class CourseDto {
     private String name;    //姓名
     private Integer subject; //  学科, 1: AI智能应用开发(Java), 2: AI大模型开发(Python)，3: AI鸿蒙开发，4: AI大数据，5: AI嵌入式，6: AI测试，7: AI运维
+    private Integer target; //适用人群
     private Integer page;   //页码
     private Integer pageSize;   //单页记录数
 }

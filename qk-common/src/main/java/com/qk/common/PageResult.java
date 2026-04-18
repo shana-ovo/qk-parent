@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PageResult<T> {
     //总记录数
-    private long totle;
+    private long total;
     //当前页的数据列表
     private List<T> rows;
 }
