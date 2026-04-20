@@ -9,7 +9,9 @@ import com.qk.entity.User;
 import com.qk.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -36,5 +38,19 @@ public class UserServiceImpl implements UserService {
         PageInfo pageInfo = new PageInfo<>(userList);
         long total = pageInfo.getTotal();
         return new PageResult<>(total,userList);
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     */
+    @Override
+    public void addUser(User user) {
+        //设定初始密码，对密码做MD5加密处理
+        user.setPassword(DigestUtils.md5DigestAsHex((user.getPassword()+"123").getBytes()));
+
+        user.setCreateTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());
+        userMapper.insert(user);
     }
 }

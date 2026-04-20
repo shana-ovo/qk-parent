@@ -2,6 +2,7 @@ package com.qk.mapper;
 
 
 import com.qk.entity.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,4 +23,12 @@ public interface UserMapper {
      * @return
      */
     List<User> selectByCondition(@Param("name") String name, @Param("status") Integer status, @Param("phone") String phone, @Param("deptId") Integer deptId);
+
+    /**
+     * 新增用户
+     * @param user
+     */
+    @Insert("insert into user(username, password, name, phone, email, gender, status, dept_id, role_id, image, remark, create_time, update_time) " +
+            "value (#{username},#{password},#{name},#{phone},#{email},#{gender},#{status},#{deptId},#{roleId},#{image},#{remark},#{createTime},#{updateTime})")
+    void insert(User user);
 }

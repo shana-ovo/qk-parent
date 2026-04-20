@@ -14,4 +14,10 @@ public interface UserService {
      * @return
      */
     PageResult<User> listUser(UserDto userDto);
+
+    /**
+     * 新增用户
+     * @param user
+     */
+    void addUser(User user);
 }

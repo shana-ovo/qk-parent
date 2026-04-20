@@ -7,9 +7,7 @@ import com.qk.dto.UserDto;
 import com.qk.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,17 @@ public class UserController {
         log.info("用户列表查询：userDto：{}",userDto);
         PageResult<User> pageResult = userService.listUser(userDto);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    @PostMapping
+    public Result addUser(@RequestBody User user) {
+        log.info("新增用户：{}",user);
+        userService.addUser(user);
+        return  Result.success();
     }
 }
