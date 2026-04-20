@@ -77,4 +77,17 @@ public interface UserMapper {
             "join role r on u.role_id = r.id" +
             " where r.label like concat('%',#{label},'%')")
     List<User> selectByRoleLabel(String label);
+
+    /**
+     * 根据deptId查询用户列表
+     * @param deptId
+     * @return
+     */
+    @Select("select u.id, u.username, u.password, u.name, u.phone, u.email, u.gender, u.status, u.dept_id, " +
+            "u.role_id, u.image, u.remark, u.create_time, u.update_time, d.name dept_name, r.name role_name " +
+            "from user u " +
+            "join dept d on u.dept_id=d.id " +
+            "join role r on u.role_id = r.id" +
+            " where dept_id = #{deptId}")
+    List<User> selectByDeptId(String deptId);
 }

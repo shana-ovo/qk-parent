@@ -93,9 +93,25 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
+    /**
+     * 根据角色标识查询用户列表
+     * @param label
+     * @return
+     */
     @Override
     public List<User> getByRoleLabel(String label) {
         List<User> userList = userMapper.selectByRoleLabel(label);
+        return userList;
+    }
+
+    /**
+     * 根据deptId查询用户列表
+     * @param deptId
+     * @return
+     */
+    @Override
+    public List<User> getByDeptId(String deptId) {
+        List<User> userList = userMapper.selectByDeptId(deptId);
         return userList;
     }
 }

@@ -104,4 +104,16 @@ public class UserController {
         List<User> userList = userService.getByRoleLabel(label);
         return Result.success(userList);
     }
+
+    /**
+     * 根据deptId查询用户列表
+     * @param deptId
+     * @return
+     */
+    @GetMapping("/dept/{deptId}")
+    public Result getByDeptId(@PathVariable("deptId")String deptId) {
+        log.info("根据roleLabel（角色标识）查询用户列表:{}",deptId);
+        List<User> userList = userService.getByDeptId(deptId);
+        return Result.success(userList);
+    }
 }

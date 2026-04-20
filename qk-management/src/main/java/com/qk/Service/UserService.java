@@ -54,4 +54,11 @@ public interface UserService {
      * @return
      */
     List<User> getByRoleLabel(String label);
+
+    /**
+     * 根据deptId查询用户列表
+     * @param deptId
+     * @return
+     */
+    List<User> getByDeptId(String deptId);
 }
