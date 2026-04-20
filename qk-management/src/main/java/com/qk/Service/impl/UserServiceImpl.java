@@ -53,4 +53,49 @@ public class UserServiceImpl implements UserService {
         user.setUpdateTime(LocalDateTime.now());
         userMapper.insert(user);
     }
+
+    /**
+     * 批量删除用户
+     * @param ids
+     */
+    @Override
+    public void deleteUsers(List<Integer> ids) {
+        userMapper.deleteByIds(ids);
+    }
+
+    /**
+     * 根据id查询用户
+     * @param id
+     * @return
+     */
+    @Override
+    public User getUser(Integer id) {
+        return userMapper.selectById(id);
+    }
+
+    /**
+     * 修改用户
+     * @param user
+     */
+    @Override
+    public void updateUser(User user) {
+        user.setUpdateTime(LocalDateTime.now());
+        userMapper.update(user);
+    }
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Override
+    public List<User> getAll() {
+        List<User> userList = userMapper.selectAll();
+        return userList;
+    }
+
+    @Override
+    public List<User> getByRoleLabel(String label) {
+        List<User> userList = userMapper.selectByRoleLabel(label);
+        return userList;
+    }
 }
