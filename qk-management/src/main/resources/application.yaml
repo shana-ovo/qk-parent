@@ -11,3 +11,10 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true  #开启蛇形命名和驼峰命名自动转换
   mapper-locations: classpath:mapper/*.xml  #指定mapper.xml文件的位置
+
+#aliyun OSS配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: bucket-llh
+    region: cn-beijing
