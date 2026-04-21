@@ -16,4 +16,10 @@ public class GlobalExceptionHandler {
         //捕获异常之后，响应一个标准的Result
         return Result.error("操作失败，请联系管理员");
     }
+
+    @ExceptionHandler(BusinessException.class)
+    public Result handleBusinessEx(BusinessException businessException) {
+        log.error("业务出现异常,{}",businessException.getMessage());
+        return Result.error(businessException.getMessage());
+    }
 }

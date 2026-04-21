@@ -2,6 +2,7 @@ package com.qk.Service;
 
 import com.qk.common.PageResult;
 import com.qk.dto.UserDto;
+import com.qk.entity.LoginResultVo;
 import com.qk.entity.User;
 
 import java.util.List;
@@ -61,4 +62,11 @@ public interface UserService {
      * @return
      */
     List<User> getByDeptId(String deptId);
+
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    LoginResultVo userLogin(User user);
 }

@@ -1,6 +1,7 @@
 package com.qk.mapper;
 
 
+import com.qk.entity.LoginResultVo;
 import com.qk.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -90,4 +91,16 @@ public interface UserMapper {
             "join role r on u.role_id = r.id" +
             " where dept_id = #{deptId}")
     List<User> selectByDeptId(String deptId);
+
+    /**
+     * 根据用户名和密码查询
+     * @param user
+     * @return
+     */
+    @Select("select u.id, u.username, u.password, u.name, u.phone, u.email, " +
+                "u.gender, u.status, u.dept_id, u.role_id, u.image, u.remark, " +
+                "u.create_time, u.update_time,r.label roleLabel " +
+            "from user u left join role r on u.role_id=r.id " +
+            "where username = #{username} and password = #{password}")
+    User selectByUnameAndPsw(User user);
 }

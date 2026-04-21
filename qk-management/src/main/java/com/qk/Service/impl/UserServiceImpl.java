@@ -5,14 +5,20 @@ import com.github.pagehelper.PageInfo;
 import com.qk.Service.UserService;
 import com.qk.common.PageResult;
 import com.qk.dto.UserDto;
+import com.qk.entity.LoginResultVo;
 import com.qk.entity.User;
+import com.qk.exception.BusinessException;
 import com.qk.mapper.UserMapper;
+import com.qk.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * 用户服务实现类
@@ -113,5 +119,39 @@ public class UserServiceImpl implements UserService {
     public List<User> getByDeptId(String deptId) {
         List<User> userList = userMapper.selectByDeptId(deptId);
         return userList;
+    }
+
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    @Override
+    public LoginResultVo userLogin(User user) {
+        //对密码处理
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        User getUser = userMapper.selectByUnameAndPsw(user);
+        if (getUser == null){
+            throw new BusinessException("用户名或密码错误！");
+        }
+        if (getUser.getStatus() != 1){
+            throw new BusinessException("用户被停用，或异常");
+        }
+
+        //设置用户token
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId",getUser.getId());
+        claims.put("username",getUser.getUsername());
+        String token = JwtUtils.generateToken(claims);
+
+        //数据封装
+        LoginResultVo loginResultVo = new LoginResultVo();
+        loginResultVo.setId(getUser.getId());
+        loginResultVo.setName(getUser.getName());
+        loginResultVo.setUsername(getUser.getUsername());
+        loginResultVo.setImage(getUser.getImage());
+        loginResultVo.setRoleLabel(getUser.getRoleLabel());
+        loginResultVo.setToken(token);
+        return loginResultVo;
     }
 }
