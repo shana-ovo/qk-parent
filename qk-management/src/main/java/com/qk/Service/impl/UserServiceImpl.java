@@ -10,6 +10,7 @@ import com.qk.entity.User;
 import com.qk.exception.BusinessException;
 import com.qk.mapper.UserMapper;
 import com.qk.utils.JwtUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -23,6 +24,7 @@ import java.util.Objects;
 /**
  * 用户服务实现类
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -140,6 +142,7 @@ public class UserServiceImpl implements UserService {
 
         //设置用户token
         Map<String, Object> claims = new HashMap<>();
+        log.info("{}-claims:{}",getClass(),claims);
         claims.put("userId",getUser.getId());
         claims.put("username",getUser.getUsername());
         String token = JwtUtils.generateToken(claims);
